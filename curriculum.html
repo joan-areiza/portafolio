@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- Le indica al navegador que este documento sigue el estándar HTML5; siempre debe ir en la primera línea del archivo -->
+<html lang="es"> <!-- Abre el documento HTML; el atributo lang="es" indica que el idioma del contenido es español -->
+
+<head>
+    <!-- Abre la sección de metadatos: información que no se muestra directamente en la página pero que el navegador necesita -->
+    <meta charset="UTF-8" />
+    <!-- Define los de caracteres UTF-8, necesaria para que tildes y la ñ se muestren correctamente -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Controla cómo se ve la página en celulares y tablets: width=device-width iguala el ancho de la página al del dispositivo, e initial-scale=1.0 fija el zoom inicial -->
+    <!-- Estilos -->
+    <link rel="stylesheet"
+        href="\css-avanzado\05-maquetacion-web1\assets\fonts\fontawesome-free-6.1.2-web\css\all.min.css" />
+    <!-- Vincula la hoja de estilos de Font Awesome, una librería externa de iconos que se usa más adelante en el menú y las redes sociales; rel="stylesheet" indica que es una hoja de estilos y href da la ruta del archivo -->
+    <link rel="stylesheet" href="\css-avanzado\05-maquetacion-web1\assets\fonts\poppins\poppins.css" />
+    <!-- Vincula el archivo CSS que carga la tipografía "Poppins" para usarla en el texto de la página -->
+    <link rel="stylesheet" href="\css-avanzado\05-maquetacion-web1\assets\css\reset.css" />
+    <!-- Vincula un archivo CSS de "reseteo": quita los márgenes, rellenos y estilos por defecto que traen los navegadores, para partir de una base limpia -->
+    <link rel="stylesheet" href="\css-avanzado\05-maquetacion-web1\assets\css\scroll.css" />
+    <!-- Vincula el archivo CSS que personaliza la apariencia de la barra de desplazamiento (scroll) de la página -->
+    <link rel="stylesheet" href="\css-avanzado\05-maquetacion-web1\assets\css\styles.css" />
+    <!-- Vincula la hoja de estilos principal del proyecto, donde están los estilos propios de esta página -->
+         <link rel="stylesheet" href="\css-avanzado\05-maquetacion-web1\assets\css\responsive.css" />
+    <title>Portafolio - Joan Areiza</title> <!-- Texto que aparece en la pestaña del navegador -->
+    <link rel="icon" type="image/png" href="\css-avanzado\05-maquetacion-web1\assets\img\default-icon.png">
+    <!--Imágen Pestaña-->
+    <!-- rel="icon" indica que este link define el ícono de la pestaña (favicon); type="image/png" indica el formato de la imagen -->
+</head> <!-- Cierra la sección de metadatos -->
+
+<body> <!-- Abre la sección visible de la página, todo lo que ve el usuario va dentro de esta etiqueta -->
+    <!-- Layout Principal -->
+    <div class="layout">
+        <!-- div es una division; class="layout" es el nombre de bloque (siguiendo la metodología BEM) que agrupa y da estructura a toda la página -->
+        <!-- Barra lateral (información del usuario)-->
+        <aside class="layout__aside">
+            <!-- aside representa contenido secundario o lateral, separado del contenido principal; layout__aside es un elemento BEM (bloque__elemento) que pertenece al bloque "layout" -->
+            <section class="aside__user-info">
+                <!-- section agrupa contenido relacionado; aquí agrupa toda la información del usuario dentro de la barra lateral -->
+                <!-- Información general del usuario -->
+                <div class="user-info__general">
+                    <!-- div contenedor para agrupar la foto, el nombre y el cargo del usuario -->
+                    <div class="user-info__container-image">
+                        <!-- div contenedor que envuelve únicamente la imagen de perfil, útil para darle un estilo específico (como recortarla en círculo) desde el CSS -->
+                        <img src="\css-avanzado\05-maquetacion-web1\assets\img\default-user.jpg"
+                            class="user-info__image" alt="Foto de perfil del usuario" />
+                        <!-- img inserta una imagen; src indica la ruta del archivo, class permite darle estilo, y alt describe la imagen por si no llega a cargar o para lectores de pantalla -->
+                        <!--Aquí va la sombra CSS-->
+                    </div> <!-- Cierra el contenedor de la imagen -->
+                    <h2 class="user-info__name">Joan Areiza</h2>
+                    <!-- h2 es un encabezado de nivel 2; aquí muestra el nombre del usuario -->
+                    <h4 class="user-info__job">Analista y Desarrollador de Software Junior</h4>
+                    <!-- h4 es un encabezado de nivel 4, más pequeño que h2; aquí muestra el cargo o profesión del usuario -->
+                </div> <!-- Cierra el contenedor de información general -->
+                <!-- Menú de navegación -->
+                <nav class="layout__menu"> <!-- nav define una sección de enlaces de navegación de la página -->
+                    <ul class="menu__list"> <!-- ul crea una lista desordenada; aquí agrupa las opciones del menú -->
+                        <li class="menu__option">
+                            <!-- li crea un elemento (ítem) dentro de la lista; cada uno representa una opción del menú -->
+                            <a href="\css-avanzado\05-maquetacion-web1\index.html" class="menu__link">
+                                <!-- a crea un enlace; href indica a qué página lleva al hacer clic, en este caso a la misma página de inicio -->
+                                <i class="menu__icon fa-solid fa-house"></i>
+                                <!-- la etiqueta i normalmente se usa para texto en cursiva, pero aquí se reutiliza para mostrar un ícono; las clases "fa-solid fa-house" vienen de la librería Font Awesome vinculada arriba y dibujan el ícono de una casa -->
+                                <span class="menu__overlay">Inicio</span>
+                                <!-- span es un contenedor de texto en línea, sin estilo propio por defecto; aquí envuelve la palabra "Inicio" para poder darle estilo o animación por separado -->
+                            </a> <!-- Cierra el enlace -->
+                        </li> <!-- Cierra el ítem de la lista -->
+                        <li class="menu__option">
+                            <a href="\css-avanzado\05-maquetacion-web1\sobre-mi.html" class="menu__link">
+                                <i class="menu__icon fa-solid fa-user"></i>
+                                <span class="menu__overlay">Sobre mí</span>
+                            </a>
+                        </li>
+                        <li class="menu__option">
+                            <a href="\css-avanzado\05-maquetacion-web1\curriculum.html"
+                                class="menu__link menu__link--active">
+                                <!-- Este enlace tiene dos clases: "menu__link" da el estilo general, y "menu__link--active" es un modificador BEM que marca esta opción como la página actual/activa dentro del menú; en esta página es "Curriculum" el que queda marcado -->
+                                <i class="menu__icon fa-solid fa-graduation-cap"></i>
+                                <span class="menu__overlay">Curriculum</span>
+                            </a>
+                        </li>
+                        <li class="menu__option">
+                            <a href="portafolio.html" class="menu__link">
+                                <i class="menu__icon fa-solid fa-briefcase"></i>
+                                <span class="menu__overlay">Portafolio</span>
+                            </a>
+                        </li>
+                        <li class="menu__option">
+                            <a href="blog.html" class="menu__link">
+                                <i class="menu__icon fa-solid fa-book"></i>
+                                <span class="menu__overlay">Blog</span>
+                            </a>
+                        </li>
+                        <li class="menu__option">
+                            <a href="contacto.html" class="menu__link">
+                                <i class="menu__icon fa-solid fa-envelope"></i>
+                                <span class="menu__overlay">Contacto</span>
+                            </a>
+                        </li>
+                    </ul> <!-- Cierra la lista del menú -->
+                </nav> <!-- Cierra la sección de navegación -->
+                <!--Links a redes sociales -->
+                <div class="user-info__user-link"> <!-- div contenedor para agrupar los enlaces a redes sociales -->
+                    <ul class="user-links__social">
+                        <li class="social__option">
+                            <a href="https://github.com/joan-areiza" class="social__link">
+                                <!-- Este enlace usa una URL completa (empieza con https://) en vez de una ruta interna, porque lleva a un sitio externo, en este caso GitHub -->
+                                <i class="social__icon fa-brands fa-github"></i>
+                                <!-- Ícono de Font Awesome para la red social GitHub; la etiqueta va vacía (sin texto dentro), por lo que en pantalla solo se ve el ícono, no la palabra "GitHub" -->
+                            </a>
+                        </li>
+                        <li class="social__option">
+                            <a href="https://www.linkedin.com/in/joan-camilo-areiza-realpe-011937426/"
+                                class="social__link">
+                                <i class="social__icon fa-brands fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="social__option">
+                            <a href="https://wa.me/573126029444" class="social__link">
+                                <!-- Enlace directo a WhatsApp; wa.me es un dominio que abre una conversación con el número indicado -->
+                                <i class="social__icon fa-brands fa-whatsapp"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div> <!-- Cierra el contenedor de redes sociales -->
+                <!-- Botón del currículum -->
+                <div class="user-info__buttons">
+                    <a href="#" class="user-info__btn">Descargar CV (Currículum)</a>
+                    <!-- href="#" es un enlace temporal que por ahora no lleva a ningún archivo; class="user-info__btn" le da apariencia de botón mediante CSS -->
+                </div>
+                <!-- Pie de página -->
+                <footer class="user-info__footer">
+                    <!-- footer representa el pie de página o de una sección; aquí cierra la barra lateral con información de derechos de autor -->
+                    &copy; 2024 Joan Areiza. Todos los derechos reservados.
+                    <!-- &copy; es una entidad HTML que muestra el símbolo de copyright (©) sin necesidad de escribirlo directamente como carácter especial -->
+                </footer> <!-- Cierra el pie de página -->
+            </section> <!-- Cierra la sección de información del usuario -->
+        </aside> <!-- Cierra la barra lateral -->
+
+        <!-- Contenido principal -->
+        <main class="layout__content">
+            <!-- main representa el contenido principal y único de la página, distinto del contenido repetido como el menú o el pie de página -->
+            <section class="content__page content__resume">
+                <!-- Agrupa el contenido central que se muestra en esta página en particular --> <!-- Esta vez el elemento tiene dos clases: "content__page" da la estructura y el scroll compartidos por todas las páginas, y "content__resume" es la clase específica para esta página del currículum -->
+                <!--Este contenido cambia en cada pagina del portafolio-->
+                <header class="resume__header"> <!-- header abre el título de esta sección -->
+                    <h2 class="resume__title">Curriculum</h2>
+                </header>
+
+                <div class="resume__container"> <!-- div contenedor que agrupa las dos columnas del currículum: formación/experiencia a la izquierda, y habilidades/conocimientos a la derecha -->
+                    <section class="resume__left"> <!-- Columna izquierda del currículum -->
+                        <header class="resume__subheader">
+                            <h2 class="resume__subtitle">Formación</h2>
+                        </header>
+                        <div class="resume__timelines"> <!-- Contenedor que agrupa varias entradas de la línea de tiempo -->
+                            <article class="timelines__timeline"> <!-- article representa un bloque independiente; aquí es una entrada individual de la línea de tiempo (un estudio o trabajo) -->
+                                <header class="timeline__header">
+                                    <h4 class="timeline__year">2008</h4> <!-- h4 se usa aquí para mostrar el año -->
+                                    <span class="timeline__company">Universidad cooperativa de Colombia</span>
+                                </header>
+                                <div class="timeline__divider"></div> <!-- div vacío que no tiene contenido propio; su forma (el punto y la línea de la línea de tiempo) se dibuja completamente desde el CSS usando los pseudo-elementos ::before y ::after -->
+                                <div class="timeline__description">
+                                    <h3 class="timeline__title">Desarrollo WEB</h3>
+                                    <p class="timeline__text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur assumenda
+                                        esse mollitia culpa ad corporis repellat harum? Hic earum ad ducimus in eveniet
+                                        labore, repellendus saepe fugiat autem. Facilis, in?
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="timelines__timeline">
+                                <header class="timeline__header">
+                                    <h4 class="timeline__year">2012</h4>
+                                    <span class="timeline__company">Servicio Nacional de Aprendizaje</span>
+                                </header>
+                                <div class="timeline__divider"></div>
+                                <div class="timeline__description">
+                                    <h3 class="timeline__title">Edición de video</h3>
+                                    <p class="timeline__text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur assumenda
+                                        esse mollitia culpa ad corporis repellat harum? Hic earum ad ducimus in eveniet
+                                        labore, repellendus saepe fugiat autem. Facilis, in?
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+                        <header class="resume__subheader">
+                            <h2 class="resume__subtitle">Experiencia</h2>
+                        </header>
+
+                        <div class="resume__timelines">
+                            <article class="timelines__timeline">
+                                <header class="timeline__header">
+                                    <h4 class="timeline__year">2005 - 2023</h4>
+                                    <span class="timeline__company">SENA</span>
+                                </header>
+                                <div class="timeline__divider"></div>
+                                <div class="timeline__description">
+                                    <h3 class="timeline__title">Aprendiz</h3>
+                                    <p class="timeline__text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur assumenda
+                                        esse mollitia culpa ad corporis repellat harum? Hic earum ad ducimus in eveniet
+                                        labore, repellendus saepe fugiat autem. Facilis, in?
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="timelines__timeline">
+                                <header class="timeline__header">
+                                    <h4 class="timeline__year">2016 - 2023</h4>
+                                    <span class="timeline__company">SENA</span>
+                                </header>
+                                <div class="timeline__divider"></div>
+                                <div class="timeline__description">
+                                    <h3 class="timeline__title">Desarrollador WEB</h3>
+                                    <p class="timeline__text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur assumenda
+                                        esse mollitia culpa ad corporis repellat harum? Hic earum ad ducimus in eveniet
+                                        labore, repellendus saepe fugiat autem. Facilis, in?
+                                    </p>
+                                </div>
+                            </article>
+                            <article class="timelines__timeline">
+                                <header class="timeline__header">
+                                    <h4 class="timeline__year">2018 - 2023</h4>
+                                    <span class="timeline__company">SENA</span>
+                                </header>
+                                <div class="timeline__divider"></div>
+                                <div class="timeline__description">
+                                    <h3 class="timeline__title">Diseño WEB</h3>
+                                    <p class="timeline__text">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur assumenda
+                                        esse mollitia culpa ad corporis repellat harum? Hic earum ad ducimus in eveniet
+                                        labore, repellendus saepe fugiat autem. Facilis, in?
+                                    </p>
+                                </div>
+                            </article>
+                        </div>
+
+                    </section>
+
+                    <section class="resume__right"> <!-- Columna derecha del currículum -->
+                        <header class="resume__subheader">
+                            <h2 class="resume__subtitle">Habilidades de <span class="subtitle__color">Diseño</span></h2> <!-- El span envuelve solo la palabra "Diseño" para poder darle un color distinto al resto del subtítulo, igual que se hizo antes con la clase "title__color" en otras páginas -->
+                        </header>
+                        <div class="resume__skills">
+                            <article class="skills__title"> <!-- article se reutiliza aquí como una fila que agrupa el nombre de la habilidad y su porcentaje -->
+                                <h4 class="skills__text">Diseño WEB</h4>
+                                <span class="skills__number">90%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p1"></div> <!-- div vacío con dos clases: "skills__percentage" da el estilo base de la barra de relleno, y "skills__percentage--p1" es el modificador que define su ancho específico (el porcentaje real de la habilidad) -->
+                            </div>
+
+
+                            <article class="skills__title">
+                                <h4 class="skills__text">Diseño Mockups</h4>
+                                <span class="skills__number">72%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p2"></div>
+                            </div>
+
+
+                            <article class="skills__title">
+                                <h4 class="skills__text">Diseño logos</h4>
+                                <span class="skills__number">50%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p3"></div>
+                            </div>
+
+
+                            <article class="skills__title">
+                                <h4 class="skills__text">Diseño Banners</h4>
+                                <span class="skills__number">60%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p4"></div>
+                            </div>
+                        </div>
+
+                        <header class="resume__subheader">
+                            <h2 class="resume__subtitle">Habilidades de <span class="subtitle__color">Código</span></h2>
+                        </header>
+
+                        <div class="resume__skills">
+                            <article class="skills__title">
+                                <h4 class="skills__text">HTML/CSS</h4>
+                                <span class="skills__number">85%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p5"></div>
+                            </div>
+
+
+                            <article class="skills__title">
+                                <h4 class="skills__text">JavaScript</h4>
+                                <span class="skills__number">65%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p6"></div>
+                            </div>
+
+
+                            <article class="skills__title">
+                                <h4 class="skills__text">Kotlin</h4>
+                                <span class="skills__number">40%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p7"></div>
+                            </div>
+
+
+                            <article class="skills__title">
+                                <h4 class="skills__text">React</h4>
+                                <span class="skills__number">83%</span>
+                            </article>
+                            <div class="skills__progressbar">
+                                <div class="skills__percentage skills__percentage--p8"></div>
+                            </div>
+                        </div>
+
+                        <header class="resume__subheader">
+                            <h2 class="resume__subtitle">Areas de conocimientos</h2>
+                        </header>
+                        <div class="resume__knowledges">
+                            <ol class="knowledges__list">
+                                <li class="knowledges__option">Programación</li>
+                                <li class="knowledges__option">Desarrollo WEB</li>
+                                <li class="knowledges__option">Bases de datos</li>
+                                <li class="knowledges__option">Redes sociales</li>
+                                <li class="knowledges__option">Formación</li>
+                                <li class="knowledges__option">Diseño WEB</li>
+                            </ol>
+                        </div>
+                    </section>
+
+                </div>
+                <div class="resume__certificate">
+                    <header class="resume__subheader">
+                        <h2 class="resume__subtitle">Certificados</h2>
+                    </header>
+                    <section class="certificates__container">
+                        <article class="certificates__certificate">
+                            <div class="certificate__logo">
+                                <img src="\css-avanzado\05-maquetacion-web1\assets\img\certificado-1.png"
+                                    class="certificate__image" alt="certificado">
+                            </div>
+                            <div class="certificate__content">
+                                <h4 class="certificate__title">Master en SQL, POO, MVC, Wordpress, PHP, JavaScript</h4>
+                                <span class="certificate__id">ID Verificación: 123456</span>
+                                <span class="certificate__date">20 octubre 2023</span>
+                            </div>
+                        </article>
+                        <article class="certificates__certificate">
+                            <div class="certificate__logo">
+                                <img src="\css-avanzado\05-maquetacion-web1\assets\img\certificado-1.png"
+                                    class="certificate__image" alt="certificado">
+                            </div>
+                            <div class="certificate__content">
+                                <h4 class="certificate__title">Master en Testing: jest, Cypress, Pruebas unitarias</h4>
+                                <span class="certificate__id">ID Verificación: 789010</span>
+                                <span class="certificate__date">10 agosto 2023</span>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </section> <!-- Cierra la sección de contenido -->
+        </main> <!-- Cierra el contenido principal -->
+
+    </div> <!-- Cierra el contenedor principal "layout" abierto al inicio del body -->
+</body> <!-- Cierra la sección visible de la página -->
+
+</html> <!-- Cierra el documento HTML -->

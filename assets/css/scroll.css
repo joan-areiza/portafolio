@@ -1,0 +1,37 @@
+:root{ /* :root selecciona el elemento raíz del documento; se usa para declarar variables CSS (propiedades personalizadas) que van a estar disponibles en todo el archivo */
+    --color-scrollbar: #d3d3d4; /* Declara una variable con el color de la barra de scroll (el "thumb" o parte que se arrastra), un gris claro */
+    --color-background-scrollbar: #eee; /* Declara una variable con el color de fondo de la barra de scroll, un gris casi blanco */
+}
+ 
+/*Scroll Chrome*/
+.content__page::-webkit-scrollbar { /* ::-webkit-scrollbar es un pseudo-elemento con prefijo de navegador que selecciona toda la barra de desplazamiento (scroll) del elemento con class="content__page"; solo funciona en navegadores basados en WebKit/Blink, como Chrome, Edge y Safari */
+    width: 25px; /* Define el ancho (grosor) de la barra de desplazamiento vertical */
+    background: transparent; /* background es una propiedad abreviada; aquí deja sin color el fondo general de la barra de scroll, haciéndolo invisible */
+}
+ 
+.content__page::-webkit-scrollbar-thumb { /* ::-webkit-scrollbar-thumb selecciona específicamente el "thumb", que es la parte de la barra de scroll que se puede arrastrar */
+    border: 10px solid transparent; /* Le pone un borde de 10px pero sin color (transparent); es un truco para crear una especie de espacio alrededor del thumb, ya que esta propiedad no acepta padding directamente */
+    box-shadow: none; /* Quita cualquier sombra, dejando el thumb sin color visible por defecto */
+    border-radius: 40px; /* Redondea las esquinas del thumb, dándole una forma de píldora u ovalada */
+}
+.content__page:hover::-webkit-scrollbar-thumb{ /* Combina la pseudo-clase :hover en .content__page con el pseudo-elemento del thumb: aplica el siguiente estilo al thumb solo mientras el mouse está sobre el contenedor */
+    box-shadow: inset 0 0 0 10px var(--color-scrollbar); /* "inset" hace que la sombra se dibuje hacia adentro del elemento en vez de hacia afuera; combinada con el borde transparente de arriba, esta sombra interna es lo que realmente pinta de color el thumb usando la variable --color-scrollbar, y solo aparece al pasar el mouse */
+}
+ 
+.content__page:hover::-webkit-scrollbar-thumb:hover{ /* Selecciona el thumb cuando el mouse está tanto sobre el contenedor como directamente encima del propio thumb */
+    border: 8px solid transparent; /* Usa el mismo truco del borde transparente, pero con un valor más pequeño (8px en vez de 10px), lo que deja más espacio visible para el color y hace que el thumb se vea un poco más grueso al pasar el mouse justo encima de él */
+    box-shadow: inset 0 0 0 10px var(--color-secundario); /* Usa el mismo truco de sombra interna que antes, pero aquí con la variable --color-secundario; esta variable no está declarada en este archivo, así que debe venir definida en otro archivo CSS del proyecto (por ejemplo styles.css) */
+}
+ 
+.content__page::-webkit-scrollbar-track{ /* ::-webkit-scrollbar-track selecciona el "riel" o fondo de la barra de scroll, es decir el camino por donde se desliza el thumb */
+    background-color: transparent; /* A diferencia de "background" (usado más arriba, que es una propiedad abreviada), "background-color" solo define el color de fondo; aquí también lo deja transparente */
+    margin: 40px 0; /* margin con dos valores: el primero (40px) se aplica arriba y abajo del riel, dejando un espacio libre en esas zonas; el segundo (0) se aplica a los lados izquierdo y derecho */
+}
+ 
+/*Scroll MOZ*/
+
+/*.content_page{ 
+    scrollbar-width: thin; /* Propiedad estándar (no exclusiva de un navegador) que controla el grosor de la barra de scroll en Firefox; "thin" la hace más delgada que el tamaño por defecto */
+ /*   scrollbar-color: var(--color-secundario) transparent; /* Otra propiedad estándar para Firefox: define en una sola línea el color del thumb (primer valor, la variable --color-secundario) y el color del riel (segundo valor, transparent) */
+/*}
+*/

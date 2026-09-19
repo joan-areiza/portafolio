@@ -1,0 +1,161 @@
+@media(max-width: 1326px) { /* @media es una regla especial que aplica los estilos que están dentro solo cuando se cumple la condición indicada; aquí "max-width: 1326px" significa que estos estilos solo se activan cuando el ancho de la pantalla del navegador es de 1326 píxeles o menos, y sirve para adaptar el diseño a pantallas más pequeñas */
+    body {
+        padding: 0; /* Quita el espacio interior en los cuatro lados del body, dejándolo en cero para esta pantalla */
+    }
+
+    .layout {
+        min-width: auto; /* "auto" cancela cualquier ancho mínimo fijo definido antes, permitiendo que el elemento se encoja libremente para adaptarse a pantallas más pequeñas */
+        width: 85%; /* Cambia el ancho del contenedor a 85% para este tamaño de pantalla, reemplazando el valor definido para pantallas más grandes */
+    }
+}
+
+@media(max-width: 1220px) {
+    .layout {
+        width: 89%;
+        margin-left: 3rem; /* margin-left aplica el espacio exterior solo en el lado izquierdo del elemento; en este tamaño de pantalla ayuda a separar el contenido del borde */
+    }
+}
+
+@media(max-width: 1180px) {
+    .layout {
+        width: 85%;
+        margin-left: 4rem;
+    }
+
+    .certificates__certificate {
+        flex-basis: 100%; /* flex-basis define el tamaño inicial de un elemento flexible; con 100% cada certificado ocupa todo el ancho de su fila, por lo que solo aparece uno por línea en esta pantalla */
+    }
+}
+
+@media(max-width: 1070px) {
+    body {
+        background-image: none; /* Quita por completo la imagen de fondo en pantallas pequeñas, probablemente para mejorar el rendimiento o porque no se ve bien a ese tamaño */
+        position: static; /* "static" es el valor por defecto de position; cancela cualquier posicionamiento relativo o absoluto definido antes, devolviendo el elemento al flujo normal de la página */
+    }
+
+    .layout {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        min-height: 100%;
+        grid-template-areas: 'content'; /* Redefine la cuadrícula para que tenga una sola área llamada "content", eliminando el espacio dedicado a la barra lateral, ya que esta se va a ocultar */
+        grid-template-columns: 100%; /* Define una sola columna que ocupa todo el ancho, porque ya no hay una columna para la barra lateral */
+    }
+
+    .layout__aside {
+        display: none; /* display: none saca por completo al elemento de la página: no solo se vuelve invisible, sino que también deja de ocupar espacio; así se oculta la barra lateral en pantallas pequeñas */
+    }
+
+    .layout__content {
+        border-radius: 0;
+        background-color: transparent;
+        height: 100%;
+    }
+
+    .content__page {
+        border-radius: 0;
+        height: 100vh;
+    }
+
+    .layout__menu {
+        position: static;
+    }
+}
+
+@media(max-width: 800px) {
+    .resume__container {
+        flex-direction: column; /* Cambia la dirección de los elementos flexibles a columna (verticalmente), en vez de en fila, para que las dos columnas del currículum queden una debajo de la otra en pantallas angostas */
+    }
+
+    .reviews__review {
+        margin-top: 6rem;
+        flex-basis: 100%;
+    }
+
+    .clients__container {
+        flex-wrap: wrap; /* Permite que los elementos pasen a una nueva línea cuando ya no caben en una sola fila, adaptando el diseño a pantallas más angostas */
+        justify-content: space-around; /* Reparte los elementos dejando un espacio igual alrededor de cada uno (a los dos lados), a diferencia de "space-between", que solo deja espacio estrictamente entre ellos */
+    }
+
+    .prices__container {
+        flex-direction: column;
+    }
+
+    .prices__box {
+        flex-basis: 100%;
+        margin: 0; /* margin con un solo valor (0) quita el espacio exterior en los cuatro lados del elemento a la vez */
+    }
+
+    .prices__box:last-child {
+        /* :last-child selecciona el último elemento entre sus hermanos, sin importar su etiqueta; aquí le agrega espacio arriba solo a la última tarjeta de precio, una vez que quedan apiladas verticalmente */
+        margin-top: 2rem;
+    }
+
+    .gallery__item {
+        flex-basis: 50%;
+    }
+
+    .articles__article {
+        flex-basis: 100%;
+    }
+}
+
+@media(max-width: 600px) {
+    .about__personal-info {
+        flex-direction: column;
+    }
+
+    .personal-info__data {
+        flex-basis: 100%;
+        padding: 0;
+        margin-top: 2rem;
+    }
+
+    .services__container {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .services__service {
+        flex-basis: 100%;
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+
+    .extra__container {
+        flex-direction: column;
+        gap: 2rem; /* gap define el espacio entre los elementos de un contenedor flex directamente, sin necesidad de ponerle margin a cada uno; aquí separa las tarjetas una vez que quedan en columna */
+    }
+
+    .contact__container {
+        flex-direction: column;
+    }
+
+}
+@media(max-width: 480px) {
+    .page__name{
+        font-size: 3.5rem; /* Reduce el tamaño de la letra del nombre en pantallas muy pequeñas */
+        line-height: 5.4rem; /* Define la altura de línea del texto, dejando espacio suficiente entre líneas si el texto llega a partirse en dos */
+        text-align: center; /* Centra el texto horizontalmente, en vez de quedar alineado como en pantallas más grandes */
+    }
+    .certificate__logo{
+        width: 100%;
+    }
+    .gallery__item{
+        flex-basis: 100%;
+    }
+    .form__container{
+        display: flex; /* display: flex activa el modelo de caja flexible, permitiendo organizar los elementos hijos en fila o columna de forma flexible */
+        flex-direction: column;
+    }
+    .form__left{
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+    .form__right{
+        flex-basis: 100%;
+        max-width: 100%; /* max-width limita el ancho máximo del elemento sin impedir que se achique si hace falta */
+        max-height: 100%; /* max-height hace lo mismo que max-width, pero limitando la altura máxima */
+    }
+}

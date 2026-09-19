@@ -1,0 +1,6 @@
+@font-face { /* @font-face es una regla especial de CSS que permite cargar una fuente tipográfica personalizada desde un archivo, en vez de depender solo de las fuentes ya instaladas en el computador del usuario */
+    font-family: "Poppins"; /* Define el nombre con el que se va a identificar esta fuente dentro del proyecto; este mismo nombre ("Poppins") es el que se usa después en la propiedad font-family de otros archivos CSS para aplicarla */
+    src: url("./Poppins-Regular.ttf") format("truetype"); /* src indica de dónde se carga el archivo de la fuente; url("./Poppins-Regular.ttf") es la ruta relativa al archivo de la tipografía, y format("truetype") le dice al navegador qué tipo de formato de fuente es (.ttf) */
+    font-weight: 400; /* Indica el grosor de esta variante de la fuente; 400 corresponde al grosor normal (ni negrita ni delgada) */
+    font-style: normal; /* Indica el estilo de esta variante de la fuente; "normal" significa que no es cursiva (italic) */
+}

@@ -1,0 +1,1354 @@
+/*Definición de Variables CSS*/
+:root {
+    /* :root selecciona el elemento raíz del documento; se usa para declarar variables CSS (propiedades personalizadas) que van a estar disponibles en todo el archivo */
+    --color-principal: #FFFFFF;
+    /* Define una variable CSS para el color principal, que es blanco */
+    /* El prefijo "--" es obligatorio: así es como CSS distingue una variable personalizada de una propiedad normal */
+    --color-secundario: #1E90FF;
+    /* Define una variable CSS para el color secundario, que es azul */
+    --color-background: lightgray;
+    /* Define una variable CSS para el color de fondo, que es un gris muy claro */
+    --color-transparent: transparent;
+    /* Define una variable CSS para el color transparente, que no tiene color y permite ver lo que hay detrás del elemento */
+    --color-icon: #B5B6B7;
+    /* Define una variable CSS para el color del icono, que es un gris claro */
+    --color-title: #222222;
+    /* Define una variable CSS para el color del título, que es un gris muy oscuro */
+    --color-subtitle: #666666;
+    /* Define una variable CSS para el color del subtítulo, que es un gris medio */
+    --color-text: #333333;
+    /* Define una variable CSS para el color del texto, que es un gris oscuro */
+    --color-border-reviews: #e5e6e7;
+    /* Define una variable CSS para el color del borde de las tarjetas de reseñas, un gris muy claro */
+    --color-company: #a5a6a7;
+    /* Define una variable CSS para el color del nombre de la empresa dentro de una reseña, un gris medio */
+    --color-background-certificate: #f5f5f5;
+    /* Define una variable CSS para el color de fondo del recuadro donde va el logo de cada certificado, un gris casi blanco */
+    --color-background-contact: #fcfcfc;
+}
+
+/* Cierra el bloque de declaración de variables */
+
+/*Estructura Generales*/
+html {
+    /* Selector por etiqueta: aplica el estilo al elemento raíz html de todo el documento */
+    font-size: 10px;
+    /* Define el tamaño base de la fuente en 10 píxeles, lo que facilita el cálculo de tamaños relativos usando rem */
+}
+
+body {
+    /* Selector por etiqueta: aplica los estilos a todo el elemento body */
+    width: 100%;
+    /* Define el ancho del cuerpo de la página; el valor está vacío, lo que significa que se usará el ancho por defecto del navegador */
+    height: 100%;
+    /* Define la altura del cuerpo de la página; el valor está vacío, lo que significa que se usará la altura por defecto del navegador */
+    font-family: 'Poppins', Helvetica, sans-serif;
+    /* Aplica la fuente principal definida en la variable --fuente-principal */
+    font-size: 1.5rem;
+    /* Define el tamaño de la fuente en 1.6 rem, lo que equivale a 16 píxeles si el tamaño base es 10 píxeles */
+    background-color: var(--color-background);
+    /* Aplica el color de fondo definido en la variable --color-background, que es un gris muy claro */
+    color: var(--color-text);
+    /* Aplica el color de texto definido en la variable --color-text, que es un gris oscuro */
+    overflow: hidden;
+    /* Oculta cualquier contenido del body que se desborde de la pantalla; se usa para que no aparezca una barra de scroll general, ya que el desplazamiento real ocurre dentro de .content__page */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* Selector múltiple: la coma permite aplicar los mismos estilos a los seis niveles de encabezado (h1 a h6) en una sola regla */
+    font-family: 'Poppins', Helvetica, sans-serif;
+    /* Aplica la fuente principal definida en la variable --fuente-principal */
+    color: var(--color-title);
+    /* Aplica el color de título definido en la variable --color-title, que es un gris muy oscuro */
+    /*  overflow: hidden;
+    /* Oculta cualquier contenido del encabezado que se salga de los límites del elemento */
+}
+
+/*Imagen del Fondo*/
+body {
+    /* Segunda regla separada para el mismo selector "body"; en CSS esto es válido, ambos bloques de estilos para body se aplican juntos, sumándose a los definidos antes */
+    background-image: url("/css-avanzado/05-maquetacion-web1/assets/img/fondo.png");
+    /* Define una imagen de fondo para el elemento, usando la ruta indicada dentro de url() */
+    background-size: cover;
+    /* Hace que la imagen de fondo se agrande lo necesario para cubrir todo el elemento, recortando lo que sobre para mantener sus proporciones */
+    background-repeat: no-repeat;
+    /* Evita que la imagen de fondo se repita (mosaico) si es más pequeña que el elemento */
+    background-position: -20px -120px;
+    /* Desplaza la posición de la imagen de fondo; los valores negativos la mueven hacia arriba y hacia la izquierda respecto a su posición normal */
+}
+
+/*Estructura Principal*/
+.layout {
+    /* El punto (.) indica un selector por clase: aplica el estilo a cualquier elemento con class="layout" */
+    position: relative;
+    /* Define la posición del contenedor principal como relativa, lo que permite posicionar elementos hijos de manera absoluta dentro de él */
+    min-width: 1290px;
+    /* Define un ancho mínimo de 1290 píxeles para el contenedor principal, asegurando que no se reduzca demasiado en pantallas pequeñas */
+    width: 75%;
+    /* Define el ancho del contenedor principal como el 75% del ancho de la ventana del navegador */
+    height: 80vh;
+    /* Define la altura del contenedor principal como el 80% de la altura de la ventana del navegador */
+    min-height: 80vh;
+    /* Define una altura mínima para el contenedor principal; el valor está vacío, lo que significa que no se aplicará una altura mínima específica */
+    margin: 10vh auto;
+    /* Centra el contenedor principal horizontalmente y le da un margen superior e inferior del 10% de la altura de la ventana del navegador */
+    display: grid;
+    /* Define el contenedor principal como un grid, lo que permite organizar sus elementos hijos en filas y columnas */
+    grid-template-areas:
+        "aside content";
+    /* Define las áreas del grid; el valor está vacío, lo que significa que no se han definido áreas específicas */
+    grid-template-columns: 30% 70%;
+    /* Define el ancho de las dos columnas de la cuadrícula: la primera ocupa 30% del ancho y la segunda 70% */
+
+    /*Sombra detras del layout*/
+    border-radius: 4rem;
+    /* Redondea las cuatro esquinas del elemento 4rem */
+    box-shadow: 0 0 100px -5px rgba(0, 0, 0, 0.25);
+    /* Agrega una sombra: sin desplazamiento horizontal ni vertical, 100px de difuminado, -5px de expansión (reduce el tamaño de la sombra) y color negro con 0.25 de opacidad definido con rgba (rojo, verde, azul, transparencia) */
+}
+
+/*Barra Lateral Azul*/
+.layout__aside {
+    grid-area: aside;
+    /* Asigna este elemento al área de la cuadrícula llamada "aside", definida antes en grid-template-areas */
+    border-radius: 4rem 0 0 4rem;
+    /* border-radius con cuatro valores redondea cada esquina por separado, en el orden: superior-izquierda, superior-derecha, inferior-derecha, inferior-izquierda */
+    overflow: auto;
+    /* A diferencia de "hidden", "auto" muestra barras de desplazamiento solo si el contenido se desborda, en vez de ocultarlo sin más */
+    overflow-x: hidden;
+    /* Aplica el recorte del contenido desbordado únicamente en el eje horizontal (x), dejando aparte el comportamiento vertical definido arriba */
+}
+
+.aside__user-info {
+    display: flex;
+    /* display controla cómo se muestra el elemento; "flex" activa el modelo de caja flexible, que permite organizar los elementos hijos en fila o columna de forma flexible */
+    flex-direction: column;
+    /* Define que los elementos flexibles se acomoden en columna (verticalmente) en vez de en fila */
+    align-items: center;
+    /* Centra los elementos hijos en el eje transversal, que en este caso (columna) es el horizontal */
+    text-align: center;
+    /* Centra el texto horizontalmente dentro del elemento */
+    min-height: 100%;
+    min-width: 30rem;
+
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+}
+
+.user-info__container-image {
+    position: relative;
+    display: inline-block;
+    /* Hace que el elemento se comporte como un elemento en línea (no obliga a un salto de línea) pero, a diferencia de "inline", sí acepta ancho y alto definidos */
+    width: 18rem;
+    margin-top: 7rem;
+    /* margin-top aplica el espacio exterior solo en el lado de arriba del elemento */
+    z-index: 1;
+    /* Controla el orden de apilamiento cuando hay elementos superpuestos; un valor más alto hace que el elemento se muestre por encima de los que tengan un valor menor */
+
+}
+
+.user-info__image {
+    width: 100%;
+    background-color: var(--color-principal);
+    border: 3px solid var(--color-principal);
+    /* border es una propiedad abreviada: define el grosor (3px), el estilo de línea (solid) y el color del borde en una sola línea */
+    border-radius: 20rem;
+}
+
+.user-info__container-image::after {
+    /* ::after es un pseudo-elemento que inserta contenido generado justo después del contenido real del elemento; se usa mucho para crear formas o efectos decorativos con CSS */
+    content: "";
+    /* content es obligatorio al usar ::before o ::after; aquí queda vacío, solo para poder crear un elemento "fantasma" que se decora con las siguientes propiedades */
+    position: absolute;
+    /* "absolute" saca al elemento del flujo normal de la página y lo posiciona respecto al ancestro más cercano que tenga position distinto de "static" (aquí, .user-info__container-image, que tiene position: relative) */
+    top: 5%;
+    /* Con position absolute, top define la distancia desde el borde superior del elemento de referencia */
+    left: 9%;
+    /* Define la distancia desde el borde izquierdo del elemento de referencia */
+    z-index: -1;
+    /* Un z-index negativo envía el elemento detrás de los demás elementos que tengan un z-index mayor o por defecto */
+    width: 100%;
+    height: 100%;
+    background-image: -webkit-repeating-radial-gradient(center center, #fff, #fff 1px, transparent 0px, transparent 100%);
+    /* -webkit- es un prefijo necesario para navegadores basados en WebKit; repeating-radial-gradient genera un patrón circular que se repite, pasando de blanco (#fff) a blanco hasta 1px y luego a transparente, creando un patrón de puntos */
+    background-size: 0.6rem 0.6rem;
+    /* Define el tamaño de cada "mosaico" del patrón repetido: 0.6rem de ancho por 0.6rem de alto */
+    opacity: 0.4;
+    /* Define la transparencia del elemento; 0 es totalmente invisible, 1 es totalmente opaco, y 0.4 lo deja bastante translúcido */
+    border-radius: 30rem;
+}
+
+.user-info__name {
+    margin-top: 2.6rem;
+    font-size: 3.2rem;
+    font-weight: bold;
+    /* Pone el texto en negrita, es decir, más grueso de lo normal */
+    color: var(--color-principal);
+
+}
+
+.user-info__job {
+    font-size: 1.7rem;
+    font-weight: 200;
+    /* font-weight también acepta valores numéricos de 100 a 900 en vez de palabras como "bold"; 200 es un grosor delgado, más liviano que el texto normal */
+    color: var(--color-principal);
+}
+
+.user-info__user-link {
+    margin-bottom: 3.6rem;
+    /* margin-bottom aplica el espacio exterior solo en el lado de abajo del elemento */
+}
+
+.user-links__social {
+    margin-top: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    /* "row" es en realidad la dirección por defecto de flexbox: acomoda los elementos en fila, uno al lado del otro de forma horizontal */
+}
+
+.social__option {
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+    /* Define la altura de línea del texto; al igualarla con el alto del elemento, ayuda a centrar verticalmente un texto de una sola línea */
+    opacity: 0.9;
+    border-radius: 3rem;
+    transition: all 300ms ease-in-out;
+    /* transition hace que los cambios de una propiedad (por ejemplo al pasar el mouse) se vean animados en vez de instantáneos; "all" aplica a cualquier propiedad que cambie, "300ms" es la duración y "ease-in-out" es el tipo de curva de velocidad (empieza y termina lento, acelera en medio) */
+}
+
+.social__option:hover {
+    /* :hover es una pseudo-clase: aplica estos estilos solo mientras el puntero del mouse está encima del elemento */
+    opacity: 1;
+    background-color: rgba(255, 255, 255, 0.20);
+}
+
+.user-info__buttons {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.user-info__btn {
+    padding: 3rem;
+    /* Define el espacio interior entre el borde y el contenido, en los cuatro lados del elemento */
+    padding-top: 1.3rem;
+    /* padding-top sobrescribe, solo para el lado de arriba, el valor definido en el padding general de la línea anterior */
+    padding-bottom: 1.3rem;
+    /* padding-bottom hace lo mismo pero para el lado de abajo */
+    border: 2px solid var(--color-principal);
+    border-radius: 3.2rem;
+    color: var(--color-principal);
+    box-shadow: 0 10px 10px -8px rgba(0, 0, 0, 0.22);
+    transition: all 300ms ease-in-out;
+}
+
+.user-info__btn:hover {
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+}
+
+.user-info__footer {
+    position: absolute;
+    bottom: 2rem;
+    /* Con position absolute, bottom define la distancia desde el borde inferior del elemento de referencia */
+    font-size: 1.2rem;
+}
+
+/*Contenedor Principal*/
+.layout__content {
+    grid-area: content;
+    height: 100%;
+    min-height: 100%;
+    background-color: var(--color-secundario);
+    border-radius: 0 10rem 10rem 0;
+
+}
+
+.content__page {
+    min-height: 100%;
+    background-color: var(--color-principal);
+    border-radius: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* Centra los elementos hijos en el eje principal, que en este caso (columna) es el vertical */
+
+}
+
+.page__name {
+    font-size: 6rem;
+    margin-bottom: 1rem;
+}
+
+.page__job {
+    font-size: 2.1rem;
+    font-weight: lighter;
+    /* "lighter" es un valor relativo: hace que el texto se vea más delgado que el peso heredado de su elemento padre, sin necesidad de indicar un número exacto */
+    color: var(--color-subtitle);
+}
+
+/*Menu Navegación Lateral*/
+.layout__menu {
+    display: block;
+    /* "block" hace que el elemento ocupe todo el ancho disponible y comience en una nueva línea, a diferencia de "flex" o "inline-block" usados antes */
+    position: absolute;
+    top: 0;
+    right: -105px;
+    /* right define la distancia desde el borde derecho del elemento de referencia; un valor negativo empuja al elemento más allá de ese borde */
+    min-width: 11rem;
+    background-color: var(--color-transparent);
+}
+
+.menu__list {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* "space-between" reparte los elementos dejando espacio igual entre ellos, empujando el primero al inicio y el último al final del contenedor */
+    align-items: center;
+
+    width: 60%;
+    min-height: 32rem;
+    padding: 2rem 0;
+    /* padding con dos valores: el primero (2rem) se aplica arriba y abajo, el segundo (0) se aplica a izquierda y derecha */
+    margin-left: 2.5rem;
+    /* margin-left aplica el espacio exterior solo en el lado izquierdo del elemento */
+    background-color: var(--color-principal);
+    box-shadow: 0 0 3rem -0.5rem rgba(0, 0, 0, 0.15);
+    border-radius: 6rem;
+}
+
+.menu__option {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.menu__icon {
+    color: var(--color-icon);
+    font-size: 2.8rem;
+    transition: all 300ms ease-in-out;
+}
+
+.menu__option:hover .menu__icon,
+.menu__link--active .menu__icon {
+    /* La coma agrega una segunda condición: además de aplicarse en hover, este color también se aplica de forma permanente al ícono del enlace que tenga la clase modificadora "menu__link--active", es decir, la opción de menú marcada como activa */
+    color: var(--color-secundario);
+}
+
+.menu__overlay {
+    position: absolute;
+    right: 0;
+    margin-top: -3rem;
+    /* Un valor negativo en margin-top jala el elemento hacia arriba, en sentido contrario al normal, haciendo que se superponga con lo que está encima */
+    display: block;
+    opacity: 0;
+    /* Deja el elemento totalmente invisible por defecto; junto con la regla :hover de más abajo, esto crea un efecto donde el texto solo aparece al pasar el mouse */
+    padding: 0.5rem 1rem;
+    color: var(--color-principal);
+    background-color: var(--color-secundario);
+    white-space: nowrap;
+    /* Evita que el texto salte a una nueva línea, manteniéndolo siempre en una sola línea aunque sea largo */
+    transition: all 300ms ease-in-out;
+}
+
+.menu__option:hover .menu__overlay {
+    opacity: 1;
+    right: 100%;
+}
+
+/*estilos generales (Sobre mi y otras paginas)*/
+.content__about,
+.content__resume,
+.content__portfolio,
+.content__blog,
+.content__contact {
+    /* Aplica los mismos estilos base al contenido de la página "Sobre mí" y al contenido de la página del currículum, ya que ambas comparten la misma estructura de espaciado y desplazamiento */
+    display: block;
+    height: 100%;
+    min-height: 100%;
+    padding: 6rem;
+    padding-right: 3rem;
+    overflow: auto;
+
+}
+
+.about__header,
+.resume__header,
+.portfolio__header,
+.blog__header,
+.contact__header {
+    display: inline-block;
+    margin-bottom: 4.5rem;
+}
+
+.about__title,
+.resume__title,
+.portfolio__title,
+.blog__title,
+.contact__title {
+    font-size: 3.2rem;
+    position: relative;
+}
+
+.about__title::after,
+.resume__title::after,
+.portfolio__title::after,
+.blog__title::after,
+.contact__title::after {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: -25px;
+    width: 50px;
+    height: 30px;
+    background-image: -webkit-repeating-radial-gradient(center center, var(--color-secundario), var(--color-secundario) 1px, transparent 0px, transparent 100%);
+    background-size: 6px 6px;
+    opacity: 0.5;
+}
+
+.title__color,
+.subtitle__color {
+    color: var(--color-secundario);
+}
+
+/*Información personal*/
+.about__personal-info {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.personal-info__bio {
+    flex-basis: 55%;
+    /* flex-basis define el tamaño inicial de un elemento flexible antes de repartir el espacio sobrante entre los demás; aquí ocupa el 55% del ancho del contenedor flexible */
+}
+
+.personal-info__description {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+}
+
+.personal-info__data {
+    flex-basis: 45%;
+    padding: 0 1.5rem;
+}
+
+.personal-info__option {
+    margin-bottom: 1rem;
+}
+
+.personal-info__title {
+    margin-right: 0.5rem;
+    color: var(--color-secundario);
+    font-weight: 600;
+}
+
+/*Estilos generales, compartidos Abouts y otras secciones*/
+
+.about__services,
+.about__reviews,
+.about__clients,
+.about__prices,
+.about__extra {
+    /* Agrupa los cinco bloques principales de la página "Sobre mí" (servicios, reseñas, clientes, precios e información extra) para darles el mismo ancho y separación entre secciones */
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.services__header,
+.reviews__header,
+.clients__header,
+.prices__header,
+.extra__header,
+.resume__subheader,
+.contact__form-header {
+    display: inline-block;
+    padding-right: 1.2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+}
+
+
+.services__title,
+.reviews__title,
+.clients__title,
+.prices__title,
+.extra__title,
+.resume__subtitle,
+.form-header__title {
+    font-size: 2.1rem;
+}
+
+.services__title::after,
+.reviews__title::after,
+.clients__title::after,
+.prices__title::after,
+.extra__title::after,
+.resume__subtitle::after,
+.form-header__title::after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 0px;
+    width: 30px;
+    height: 20px;
+    background-image: -webkit-repeating-radial-gradient(center center, var(--color-secundario), var(--color-secundario) 1px, transparent 0px, transparent 100%);
+    background-size: 6px 6px;
+    opacity: 0.5;
+}
+
+/*Servicios*/
+.services__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-wrap permite que los elementos flexibles pasen a una nueva línea cuando ya no caben en una sola fila, en vez de encogerse o desbordarse */
+}
+
+.services__service {
+    flex-basis: calc(50% - 3rem);
+    /* calc() permite hacer operaciones matemáticas combinando unidades distintas; aquí resta 3rem al 50% del ancho, para que quepan exactamente dos tarjetas por fila dejando espacio para el margen */
+    margin-right: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+.service__real-icon {
+    color: var(--color-secundario);
+    font-size: 3.8rem;
+}
+
+.service__title {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.service__description {
+    font-size: 1.5rem;
+    text-align: justify;
+    /* "justify" estira el texto para que quede alineado tanto por el lado izquierdo como por el derecho, a diferencia de "center" usado antes */
+}
+
+/*Reviews*/
+.reviews__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.reviews__review {
+    flex-basis: calc(50% - 2.5rem);
+
+    border: 2px solid var(--color-border-reviews);
+    border-radius: 2rem;
+    padding-top: 0;
+    padding-right: 2.5rem;
+    padding-left: 2.5rem;
+    padding-bottom: 1.5rem;
+    margin-right: 2.5rem;
+    margin-top: 4.5rem;
+    margin-bottom: 1rem;
+}
+
+.review__image-container {
+    width: 100%;
+}
+
+.review__image {
+    max-width: 9rem;
+    /* max-width limita el ancho del elemento para que nunca supere el valor indicado, pero sí le permite ser más pequeño si el espacio disponible es menor */
+    max-height: 9rem;
+    /* max-height hace lo mismo que max-width, pero limitando la altura máxima del elemento */
+    margin: 0 auto;
+    margin-top: -4.5rem;
+    margin-bottom: 2rem;
+    border-radius: 9rem;
+    box-shadow: 0 10px 10px -7px rgba(0, 0, 0, 0.22);
+}
+
+.review__description {
+    margin-bottom: 1rem;
+}
+
+.review__text {
+    font-size: 1.5rem;
+    line-height: 2.4rem;
+}
+
+.review__author {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.review__name {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.review__company {
+    color: var(--color-company);
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+.review__icon {
+    font-size: 4rem;
+    opacity: 0.5;
+    color: var(--color-secundario);
+}
+
+/*Clientes*/
+.about__clients {
+    /* Esta regla vuelve a usar el selector .about__clients, que ya recibió estilos en el bloque agrupado de más arriba; en CSS, cuando dos reglas con la misma especificidad definen la misma propiedad, la que aparece más abajo en el archivo es la que finalmente se aplica, así que este margin-bottom (2rem) reemplaza al definido antes (3rem) */
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.clients__header {
+    margin-bottom: 3rem;
+}
+
+.clients__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.clients__link {
+    display: block;
+    width: 100%;
+    opacity: 0.7;
+    transition: all 300ms linear;
+    /* "linear" es otro tipo de curva de velocidad para la transición: a diferencia de "ease-in-out", mantiene una velocidad constante durante toda la animación, sin acelerar ni frenar */
+}
+
+.clients__link:hover {
+    opacity: 1;
+}
+
+.clients__image {
+    width: 145px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/*Precios*/
+.prices__container {
+    margin-bottom: 5rem;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.prices__box {
+    flex-basis: 50%;
+    height: 100%;
+    margin-right: 3rem;
+    padding: 3rem;
+    border: 2px solid var(--color-border-reviews);
+    border-radius: 1.5rem;
+    text-align: center;
+    transition: all 300ms ease-in-out;
+}
+
+.prices__box:last-of-type {
+    /* :last-of-type selecciona solo el último elemento de su tipo entre los elementos hermanos; aquí le quita el margen derecho a la última tarjeta de precio para que no deje espacio extra después de ella */
+
+
+    margin-right: 0rem;
+}
+
+.prices__box:hover,
+.extra__info:hover {
+    box-shadow: 0 18px 24px -5px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1rem);
+    /* transform permite mover, rotar o escalar un elemento visualmente sin afectar el espacio que ocupan los elementos de alrededor; translateY mueve el elemento en el eje vertical, y un valor negativo aquí lo levanta un poco hacia arriba, creando un efecto de "elevación" al pasar el mouse */
+}
+
+.prices__subtitle {
+    margin-bottom: 3rem;
+}
+
+.prices__text {
+    position: relative;
+    display: inline-block;
+}
+
+.prices__box:hover .prices__text::after {
+    /* Crea una línea de color debajo de la palabra "Normal" o "Premium", pero solo mientras el mouse está sobre toda la tarjeta de precio */
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.3rem;
+    height: 0.2rem;
+    background-color: var(--color-secundario);
+}
+
+.prices__price {
+    padding-bottom: 1rem;
+}
+
+.prices__number {
+    display: block;
+    font-size: 4.2rem;
+    line-height: 1;
+    /* Cuando line-height no lleva unidad, es un valor "unitless": significa que la altura de línea será exactamente 1 vez el tamaño de la fuente, sin dejar espacio extra entre líneas */
+    color: var(--color-title);
+}
+
+.prices__advice {
+    display: block;
+    color: var(--color-subtitle);
+}
+
+.prices__buy {
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
+}
+
+.prices__btn {
+    display: inline-block;
+    padding: 1.2rem 3.1rem;
+    border: 2px solid var(--color-border-reviews);
+    box-shadow: 0 10px 10px -8px var(--color-border-reviews);
+    border-radius: 3rem;
+    transition: all 300ms ease-in-out;
+}
+
+.prices__btn:hover {
+    border: 2px solid var(--color-secundario);
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+}
+
+.prices__reward {
+    font-size: 1.4rem;
+    padding: 0.5rem 0;
+
+}
+
+/*Información Extra*/
+.extra__container {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.extra__info {
+    flex-basis: 30%;
+    padding: 2.5rem 1rem;
+    border: 2px solid var(--color-border-reviews);
+    border-radius: 1rem;
+    text-align: center;
+    transition: all 300ms ease-in-out;
+}
+
+.extra__info:hover {
+    transform: translateY(-0.5rem);
+}
+
+.extra__icon {
+    font-size: 3.3rem;
+    color: var(--color-secundario);
+    margin-bottom: 1rem;
+}
+
+.extra__subtitle {
+    font-size: 1.5rem;
+    margin: 1.5rem;
+}
+
+.extra__quantity {
+    display: block;
+    margin: 1.5rem 1rem;
+    margin-bottom: 0;
+    font-size: 3.6rem;
+    line-height: 5rem;
+    color: var(--color-subtitle);
+}
+
+/*Curriculum izquierda*/
+.resume__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.resume__left {
+    flex-basis: 58%;
+    margin-right: 1.5rem;
+}
+
+.resume__timelines {
+    margin-bottom: 5rem;
+}
+
+.timelines__timeline {
+    position: relative;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.timeline__header {
+    flex-basis: 30%;
+    text-align: right;
+    /* Alinea el texto contra el borde derecho del elemento, a diferencia de "center" o "justify" usados antes */
+    padding-right: 2.5rem;
+}
+
+.timeline__year {
+    margin: 0.3rem 0;
+    line-height: 1.9rem;
+    font-size: 1.4rem;
+}
+
+.timeline__company {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: lighter;
+    color: var(--color-company);
+}
+
+.timeline__description {
+    width: 70%;
+    padding-left: 2.5rem;
+    padding-right: 1.5rem;
+}
+
+.timeline__title {
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.timeline__text {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.timeline__divider {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    bottom: -18px;
+    width: 1px;
+    background-color: var(--color-background);
+}
+
+.timeline__divider::before {
+    /* ::before funciona igual que ::after, pero inserta el contenido generado justo antes del contenido real del elemento en vez de después */
+    content: "";
+    position: absolute;
+    margin-top: 0.4rem;
+    margin-left: -0.8rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    background-color: var(--color-secundario);
+    border-radius: 10rem;
+    opacity: 0.25;
+}
+
+.timeline__divider::after {
+    content: "";
+    position: absolute;
+    margin-top: 0.8rem;
+    margin-left: -0.4rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    background-color: var(--color-principal);
+    border-radius: 10rem;
+    border: 2px solid var(--color-secundario);
+    opacity: 1;
+}
+
+/*Curriculum derecho*/
+
+.resume__right {
+    flex-basis: 41%;
+    padding: 0 1.5rem;
+}
+
+.resume__skills {
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.skills__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skills__text {
+    font-size: 1.3rem;
+    line-height: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.skills__number {
+    font-size: 1.1rem;
+    line-height: 1.4rem;
+    margin-bottom: 0.4rem;
+    color: var(--color-subtitle);
+}
+
+.skills__progressbar {
+    /* Junto con .skills__percentage, forma una barra de progreso: este elemento es el "fondo" o riel completo de la barra */
+    height: 1rem;
+    border: 1px solid var(--color-secundario);
+    border-radius: 1rem;
+    background-color: var(--color-principal);
+    margin-bottom: 1.5rem;
+}
+
+.skills__percentage {
+    /* Este es el relleno de color de la barra de progreso, colocado encima de .skills__progressbar; el width de 40% es un valor por defecto que las clases modificadoras de abajo sobrescriben con el porcentaje real de cada habilidad */
+    width: 40%;
+    height: 0.8rem;
+    background-color: var(--color-secundario);
+    border: 2px solid var(--color-principal);
+    border-radius: 1rem;
+}
+
+.skills__percentage--p1 {
+    /* Modificador BEM: sobrescribe únicamente el width del relleno, para representar visualmente el porcentaje de una habilidad específica; cada --p2, --p3, etc. que siguen hacen lo mismo con un valor distinto */
+    width: 90%;
+}
+
+.skills__percentage--p2 {
+    width: 72%;
+}
+
+.skills__percentage--p3 {
+    width: 50%;
+}
+
+.skills__percentage--p4 {
+    width: 60%;
+}
+
+.skills__percentage--p5 {
+    width: 85%;
+}
+
+.skills__percentage--p6 {
+    width: 65%;
+}
+
+.skills__percentage--p7 {
+    width: 40%;
+}
+
+.skills__percentage--p8 {
+    width: 83%;
+}
+
+
+.knowledges__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.knowledges__option {
+    padding: 0.1rem 1.2rem;
+    margin: 0.3rem;
+    /* margin con un solo valor aplica ese mismo espacio (0.3rem) en los cuatro lados del elemento a la vez, a diferencia de los usos anteriores con dos o cuatro valores */
+    font-size: 1.4rem;
+    background-color: var(--color-secundario);
+    border-radius: 0.3rem;
+    color: var(--color-principal);
+}
+
+.certificates__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem;
+    /* gap define el espacio entre los elementos de un contenedor flex o grid directamente, sin necesidad de ponerle margin a cada elemento por separado */
+}
+
+.certificates__certificate {
+    flex-basis: calc(50% - 1.5rem);
+    border: 2px solid var(--color-border-reviews);
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.certificate__logo {
+    width: 15rem;
+    height: 100%;
+    padding: 2.5rem;
+    background-color: var(--color-background-certificate);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.certificate__image {
+    width: 100%;
+}
+
+.certificate__content {
+    padding: 2rem 2.5rem;
+}
+
+.certificate__title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+}
+
+.certificate__id {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+    color: var(--color-subtitle);
+}
+
+.certificate__date {
+    font-size: 1.2rem;
+    color: var(--color-subtitle);
+    opacity: 0.9;
+}
+
+/*Portafolio*/
+.portfolio__navbar {
+    margin-bottom: 3rem;
+}
+
+.portfolio__menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.portfolio__option {
+    font-size: 1.3rem;
+    opacity: 0.7;
+}
+
+.portfolio__option--active {
+    opacity: 1;
+}
+
+.portfolio__limk {
+    cursor: pointer;
+}
+
+.portfolio__link:hover {
+    color: var(--color-secundario);
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.25);
+}
+
+.portfolio__gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.gallery__item {
+    position: relative;
+    flex-basis: 33%;
+    padding: 0.7rem;
+}
+
+.gallery__container-image {
+    overflow: hidden;
+}
+
+.gallery__image {
+    transition: all 300ms ease-in-out;
+}
+
+.gallery__item:hover .gallery__image {
+    transform: scale(1.1);
+}
+
+.gallery__title {
+    font-size: 1.6rem;
+    padding: 1.5rem 0;
+    font-weight: bold;
+}
+
+.gallery__icon {
+    opacity: 0;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 3rem;
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+    transition: all 450ms ease-in-out;
+}
+
+.gallery__category {
+    opacity: 0;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.2rem 0.7rem;
+    font-size: 1.1rem;
+    background-color: var(--color-principal);
+    color: var(--color-text);
+    transition: all 450ms ease-in-out;
+}
+
+.gallery__item:hover .gallery__icon,
+.gallery__item:hover .gallery__category {
+    opacity: 1;
+}
+
+/*Blog*/
+.blog__articles {
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.articles__article {
+    flex-basis: 50%;
+    padding: 0 1.5rem;
+    padding-bottom: 3.5rem;
+}
+
+.article__top {
+    position: relative;
+    overflow: hidden;
+}
+
+.article__category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.1rem;
+    line-height: 2rem;
+    padding: 0.1rem 0.7rem;
+    background-color: var(--color-principal);
+    color: var(--color-secundario);
+    z-index: 1;
+}
+
+.article__mask {
+    width: 100%;
+    height: 18.5rem;
+    overflow: hidden;
+}
+
+.article__image {
+    display: block;
+    z-index: 1;
+    transition: all 300ms ease-in-out;
+}
+
+.article__top:hover .article__image {
+    transform: scale(1.1);
+}
+
+.article__logo {
+    transition: all 200ms ease-in-out;
+    opacity: 0;
+}
+
+.article__icon {
+    position: absolute;
+    top: calc(50% - 2.2rem);
+    left: calc(50% - 2.2rem);
+    width: 4.4rem;
+    font-size: 4.4rem;
+    text-align: center;
+    color: var(--color-principal);
+}
+
+.article__top:hover .article__logo {
+    opacity: 1;
+}
+
+.article__bottom {
+    margin: 0;
+    padding: 2.1rem;
+    padding-top: 1.5rem;
+    border: 0.1rem solid var(--color-border-reviews);
+    border-top: 0;
+}
+
+.article__date {
+    display: block;
+    font-size: 1.1rem;
+    line-height: 1.2rem;
+    font-weight: 300;
+    color: var(--color-subtitle);
+}
+
+.article__title {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+}
+
+/*Paina Contacto*/
+.contact__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.contact__info {
+    flex-basis: 33%;
+    padding: 0 1.5rem;
+}
+
+.contact__data {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 2rem 1rem;
+    text-align: center;
+    background-color: var(--color-background-contact);
+    border: 1px solid var(--color-border-reviews);
+
+}
+
+.contact__icon {
+    font-size: 3.3rem;
+    color: var(--color-secundario);
+}
+
+.contact__subtitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.contact__form-box {
+    flex-basis: 66%;
+    padding: 0 1.5rem;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.form__left {
+    flex-basis: 47%;
+    margin-right: 1.5rem;
+}
+
+.form__group {
+    position: relative;
+    margin-bottom: 2.5rem;
+}
+
+.form__input {
+    position: relative;
+    width: 100%;
+    height: 4.2rem;
+    display: block;
+    border: 0.2rem solid var(--color-border-reviews);
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    padding: 1rem 1.2rem;
+    outline: none;
+    box-shadow: 0 1rem 1rem -8px rgba(0, 0, 0, 0.10);
+    background-color: transparent;
+    line-height: 2.15rem;
+}
+
+.form__input:focus {
+    border: 0.2rem solid var(--color-secundario);
+}
+
+.form__label {
+    position: absolute;
+    top: 1rem;
+    left: 1.5rem;
+    z-index: 1;
+    color: var(--color-company);
+    transition: all 300ms ease-in-out;
+    pointer-events: none;
+}
+
+.form__input:focus~label,
+.form__input:not(:placeholder-shown)~label {
+
+    top: -2rem;
+    left: 0;
+    z-index: 1;
+    font-size: 1.3rem;
+    color: var(--color-secundario);
+}
+
+.form__input::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.form__input::-moz-placeholder {
+    color: transparent;
+}
+
+.form__right {
+    flex-basis: 50%;
+    max-width: 50%;
+    max-height: 100%;
+}
+
+.form__group--textarea {
+    height: 100%;
+}
+
+.form__input--textarea {
+    display: block;
+    resize: none;
+    height: 100%;
+}
+.form__button{
+    cursor: pointer;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    border: 0.2rem solid var(--color-secundario);
+    color: var(--color-title);
+    background-color: var(--color-principal);
+    border-radius: 3rem;
+    box-shadow: 0 1rem 1rem -8px rgba(0, 0, 0, 0.22);
+    transition: all 300ms ease-in-out;
+}
+.form__button:hover{
+    background-color: var(--color-secundario);
+    color: var(--color-principal);
+}
+
+.contact__map{
+    width: 100%;
+    min-height: 15rem;
+    margin-bottom: 3.5rem;
+    overflow: hidden;
+    /*Nuevas lineas agregadas*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact__iframe{
+    width: 100%;
+    height: 14rem;
+}

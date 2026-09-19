@@ -1,0 +1,20 @@
+.loader {
+    width: 40px; /* Define el ancho del elemento en 40 píxeles */
+    height: 40px; /* Define el alto del elemento en 40 píxeles */
+    border: 5px solid #fff; /* border es una propiedad abreviada: define el grosor (5px), el estilo de línea (solid) y el color del borde (blanco) en una sola línea */
+    border-bottom-color: var(--color-secundario); /* Sobrescribe el color solo del borde de abajo, dejándolo del color de la variable --color-secundario mientras los otros tres lados quedan blancos; esta diferencia de color es lo que crea el efecto de "hueco" que gira */
+    border-radius: 50%; /* border-radius al 50% convierte un elemento cuadrado en un círculo perfecto */
+    display: block; /* display controla cómo se muestra el elemento; "block" hace que ocupe todo el ancho disponible y empiece en una línea nueva */
+    box-sizing: border-box; /* Cambia la forma en que se calcula el tamaño del elemento: el borde queda incluido dentro del width y height ya definidos, en vez de sumarse por fuera y agrandar el elemento */
+    animation: rotation 1s linear infinite; /* animation es una propiedad abreviada que activa una animación personalizada: "rotation" es el nombre de la animación definida más abajo con @keyframes, "1s" es la duración de un ciclo completo, "linear" hace que gire a velocidad constante, e "infinite" hace que se repita para siempre sin detenerse */
+}
+
+@keyframes rotation { /* @keyframes define los pasos de una animación personalizada; el nombre "rotation" es el mismo que se usa en la propiedad animation de arriba, para que CSS sepa qué animación aplicar */
+    0% {
+        transform: rotate(0deg); /* Al inicio de la animación (0% del recorrido), el elemento está rotado 0 grados, es decir en su posición normal; transform: rotate() gira el elemento sobre su propio centro */
+    }
+
+    100% {
+        transform: rotate(360deg); /* Al final de la animación (100% del recorrido), el elemento ha girado 360 grados, una vuelta completa; el paso de 0% a 100% es lo que crea el efecto de giro continuo */
+    }
+}

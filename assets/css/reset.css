@@ -1,0 +1,105 @@
+* {
+    /* El asterisco (*) es un selector universal: selecciona absolutamente todos los elementos de la página */
+    margin: 0;
+    /* Quita el espacio exterior que traen por defecto los elementos del navegador */
+    padding: 0;
+    /* Quita el espacio interior que traen por defecto los elementos del navegador */
+    vertical-align: baseline;
+    /* Alinea el elemento con la línea base del texto; se usa para quitar pequeños desajustes verticales que traen por defecto elementos como imágenes o celdas de tabla */
+}
+
+*,
+*::before,
+*::after {
+    /* La coma separa varios selectores que reciben los mismos estilos; ::before y ::after son pseudo-elementos que permiten insertar contenido antes o después del contenido real de un elemento mediante CSS */
+    box-sizing: border-box;
+    /* inherit hace que el elemento tome el mismo valor que tiene su elemento padre para esta propiedad, en vez de usar un valor propio */
+    -webkit-box-sizing: border-box;
+    /* Misma propiedad box-sizing pero con el prefijo -webkit-, necesario para que funcione en versiones antiguas de navegadores basados en WebKit, como Chrome o Safari */
+    -moz-box-sizing: border-box;
+    /* Misma propiedad box-sizing pero con el prefijo -moz-, necesario para que funcione en versiones antiguas de Firefox */
+}
+
+html {
+    /* Selector por etiqueta: aplica el estilo al elemento raíz html de todo el documento */
+    scroll-behavior: smooth;
+    /* Hace que el desplazamiento de la página (por ejemplo al hacer clic en un enlace interno) sea animado y suave, en vez de saltar de golpe */
+}
+
+body {
+    /* Selector por etiqueta: aplica los estilos a todo el elemento body */
+    min-height: 100vh;
+    /* Define una altura mínima igual al 100% del alto visible de la pantalla (vh = viewport height); asegura que el body ocupe como mínimo toda la pantalla aunque tenga poco contenido */
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    /* Le indica al navegador que priorice la velocidad de carga del texto por encima de la precisión visual al dibujarlo en pantalla */
+    line-height: 1.5;
+    /* Define el espacio entre líneas de texto; 1.5 significa 1.5 veces el tamaño de la letra, lo que facilita la lectura */
+}
+
+ul,
+ol {
+    /* Selector por etiqueta para listas desordenadas (ul) y ordenadas (ol) al mismo tiempo, separadas por coma */
+    list-style: none;
+    /* Quita los puntos o números que traen las listas por defecto */
+}
+
+/*
+h1, h2, h3, h4, h5, h6{
+    font-size: inherit;
+    font-weight: inherit;
+}
+*/
+
+/*
+*{
+    display: block; /* display controla cómo se muestra un elemento; "block" hace que ocupe todo el ancho disponible y empiece en una línea nueva, normalizando el comportamiento de todos los elementos por igual */
+/*    text-decoration: none; /* Quita el subrayado u otra decoración de texto que traen por defecto elementos como los enlaces */
+/*}*/
+
+a {
+    /* Selector por etiqueta: aplica los estilos siguientes específicamente a todos los elementos "a" (enlaces) de la página */
+    display: block;
+    /* display controla cómo se muestra un elemento; "block" hace que ocupe todo el ancho disponible y empiece en una línea nueva, normalizando el comportamiento de todos los elementos por igual */
+    text-decoration: none;
+    /* Quita el subrayado u otra decoración de texto que traen por defecto elementos como los enlaces */
+    font-family: inherit;
+    /* Hace que los enlaces usen la misma tipografía definida en su elemento padre, en vez de la fuente por defecto que suelen traer los enlaces */
+    font-size: inherit;
+    /* Hace que los enlaces usen el mismo tamaño de letra definido en su elemento padre, en vez del tamaño por defecto que suelen traer los enlaces */
+    color: inherit;
+    /* Hace que los enlaces usen el mismo color de texto definido en su elemento padre, en vez del color por defecto que suelen traer los enlaces */
+}
+
+p a {
+    /* Selector descendiente: aplica el estilo únicamente a los elementos "a" (enlaces) que estén dentro de un elemento "p" (párrafo) */
+    display: inline;
+    /* Sobrescribe la regla anterior solo para estos enlaces: "inline" hace que el elemento se comporte como parte del texto, sin saltar de línea, a diferencia de "block" */
+}
+
+img,
+video,
+iframe,
+picture,
+figure {
+    /* Selector múltiple: aplica los mismos estilos a estas cinco etiquetas relacionadas con contenido multimedia */
+    max-width: 100%;
+    /* Limita el ancho del elemento para que nunca supere el ancho de su contenedor, evitando que se desborde fuera de la pantalla */
+    display: block;
+}
+
+form,
+input,
+textarea,
+button,
+select,
+label {
+    /* Selector múltiple: aplica los mismos estilos a estas etiquetas usadas en formularios */
+    font-family: inherit;
+    /* Hace que estos elementos usen la misma tipografía definida en su elemento padre, en vez de la fuente por defecto que suelen traer los formularios */
+    font-size: inherit;
+    /* Hace que estos elementos usen el mismo tamaño de letra definido en su elemento padre */
+    display: block;
+    color: inherit;
+    /* Hace que estos elementos usen el mismo color de texto definido en su elemento padre */
+}
